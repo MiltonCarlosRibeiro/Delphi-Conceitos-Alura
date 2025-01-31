@@ -30,6 +30,7 @@ var
   VARNOME : STRING;
 
 
+
 implementation
 
 {$R *.dfm}
@@ -37,37 +38,39 @@ implementation
 procedure TForm1.Button1Click(Sender: TObject);
 begin
 
-  IF DOLAR.Text = '' then
-    begin
-     SHOWMESSAGE('Digite um valor em dolar');
-    end
+ IF DOLAR.Text = ''  then
+   BEGIN
+    SHOWMESSAGE('DIGITE VALOR EM DOLAR');
+   END
 
-  ELSE
-    begin
-      COMPRA.Enabled := True;
-      VARREAL := STRTOFLOAT (DOLAR.Text) * 3.9;
-      REAL.Text := FLOATTOSTR(VARREAL);
-    end;
+ ELSE
+   BEGIN
+    COMPRA.Enabled := TRUE;
+    VARREAL := STRTOFLOAT(DOLAR.Text) * 3.9 ;
+    REAL.Text := FLOATTOSTR(VARREAL);
 
+
+   END;
 
 
 
 
 end;
+
+
+
+
 
 procedure TForm1.COMPRAClick(Sender: TObject);
 begin
 
-  VARNOME := INPUTBOX('NOME','Digite seu nome','');
+ VARNOME := INPUTBOX('NOME','DIGITE SEU NOME','');
 
-  begin
-  IF (VARNOME <> '') and (DOLAR.Text <> '0') then
-    MSG.Caption := 'Parabéns ' + VARNOME + ',Você comprou ' + DOLAR.Text + ' Dolar(es)'
+ if (VARNOME <> '') AND  (DOLAR.Text <> '0') THEN
+   MSG.CAPTION := 'PARABENS ' + VARNOME + ' , VOCE COMPROU ' + DOLAR.Text + ' DOLAR(ES)'
+ ELSE
+   SHOWMESSAGE ('FALTA NOME OU DOLAR TEM QUE SER > 0');
 
-  ELSE
-    SHOWMESSAGE ('* Houve  um erro. Por favor preencha todos com campos, apenas valores maiores que 0 serão aceitos!');
-  end;
-
-end;
+ end;
 
 end.
