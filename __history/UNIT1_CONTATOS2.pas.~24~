@@ -1,0 +1,227 @@
+unit UNIT1_CONTATOS2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf,
+  FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
+  FireDAC.Phys.MSAcc, FireDAC.Phys.MSAccDef, FireDAC.VCLUI.Wait,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TForm2 = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    txt_ID: TEdit;
+    txt_NOME: TEdit;
+    txt_TELEFONE: TEdit;
+    txt_EMAIL: TEdit;
+    txt_OBS: TMemo;
+    FDConnection1: TFDConnection;
+    FDContatos: TFDTable;
+    DataSource1: TDataSource;
+    btn_NOVO: TButton;
+    btn_SALVAR: TButton;
+    status: TLabel;
+    btn_PRIOR: TButton;
+    btn_NEXT: TButton;
+    btn_EDITAR: TButton;
+    btn_EXCLUIR: TButton;
+    txt_CANCELAR: TButton;
+    txt_PROCURA: TEdit;
+    Label6: TLabel;
+    SpeedButton1: TSpeedButton;
+    DBGrid1: TDBGrid;
+    SpeedButton2: TSpeedButton;
+
+    procedure FormCreate(Sender: TObject);
+    procedure carrega;
+    procedure bloqueia;
+    procedure limpa;
+    procedure btn_NEXTClick(Sender: TObject);
+    procedure btn_PRIORClick(Sender: TObject);
+    procedure btn_NOVOClick(Sender: TObject);
+    procedure btn_SALVARClick(Sender: TObject);
+    procedure FDContatosBeforePost(DataSet: TDataSet);
+    procedure btn_EXCLUIRClick(Sender: TObject);
+    procedure btn_EDITARClick(Sender: TObject);
+    procedure txt_CANCELARClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+  estado: integer;
+
+implementation
+
+{$R *.dfm}
+
+procedure Tform2.bloqueia;
+begin
+  txt_NOME.Enabled      := not   txt_NOME.Enabled;
+  txt_TELEFONE.Enabled  := not   txt_TELEFONE.Enabled;
+  txt_EMAIL.Enabled     := not   txt_EMAIL.Enabled;
+  txt_OBS.Enabled       := not   txt_OBS.Enabled;
+end;
+
+procedure Tform2.limpa;
+begin
+  txt_ID.Text           := '';
+  txt_NOME.Text         := '';
+  txt_TELEFONE.Text     := '';
+  txt_EMAIL.Text        := '';
+  txt_OBS.Text          := '';
+  txt_NOME.SetFocus;
+
+end;
+
+procedure TForm2.SpeedButton1Click(Sender: TObject);
+begin
+  if
+    fdcontatos.FindKey([txt_PROCURA.Text]) then
+      carrega
+  else
+    showmessage ('Item não encontrado!');
+
+
+end;
+
+procedure TForm2.SpeedButton2Click(Sender: TObject);
+begin
+  Form2.Close;
+end;
+
+procedure TForm2.txt_CANCELARClick(Sender: TObject);
+begin
+  limpa;
+  if estado = 1 then
+    fdcontatos.Prior;
+  carrega;
+  bloqueia;
+  estado := 0;
+end;
+
+procedure TForm2.btn_EDITARClick(Sender: TObject);
+begin
+  bloqueia;
+  fdcontatos.Edit;
+end;
+
+procedure TForm2.btn_EXCLUIRClick(Sender: TObject);
+begin
+  fdcontatos.Delete;
+  carrega;
+end;
+
+
+
+procedure TForm2.btn_NEXTClick(Sender: TObject);
+begin
+  fdcontatos.Next;
+  carrega;
+end;
+
+procedure TForm2.btn_NOVOClick(Sender: TObject);
+begin
+  fdcontatos.Insert;
+  bloqueia;
+  limpa;
+  estado := 1;   // 1 = post
+
+end;
+
+procedure TForm2.btn_PRIORClick(Sender: TObject);
+begin
+  fdcontatos.Prior;
+  carrega;
+end;
+
+procedure TForm2.btn_SALVARClick(Sender: TObject);
+begin
+fdcontatos.Post;
+bloqueia;
+showmessage ('Novo registro salvo!');
+
+end;
+
+procedure Tform2.carrega;
+begin
+  if fdcontatos.FieldByName('id').Value = NULL then
+     txt_ID.text       := ''
+  else
+  txt_ID.text          := fdcontatos.FieldByName('id').Value;
+
+
+  if fdcontatos.FieldByName('nome').Value = NULL then
+     txt_NOME.text     := ''
+  else
+  txt_NOME.text        := fdcontatos.FieldByName('nome').Value;
+
+
+  if fdcontatos.FieldByName('telefone').Value = NULL then
+     txt_TELEFONE.text := ''
+  else
+  txt_TELEFONE.text := fdcontatos.FieldByName('telefone').Value;
+
+
+  if fdcontatos.FieldByName('email').Value = NULL then
+     txt_EMAIL.text    := ''
+  else
+  txt_EMAIL.text       := fdcontatos.FieldByName('email').Value;
+
+
+  if fdcontatos.FieldByName('observacoes').Value = NULL then
+     txt_OBS.text      := ''
+  else
+     txt_OBS.text      := fdcontatos.FieldByName('observacoes').Value;
+end;
+
+procedure TForm2.DBGrid1DblClick(Sender: TObject);
+begin
+  carrega;
+end;
+
+procedure TForm2.FDContatosBeforePost(DataSet: TDataSet);
+begin
+   fdcontatos.FieldByName('nome').Value        := txt_NOME.Text;
+   fdcontatos.FieldByName('telefone').Value    := txt_TELEFONE.Text;
+   fdcontatos.FieldByName('email').Value       := txt_EMAIL.Text;
+   fdcontatos.FieldByName('observacoes').Value :=txt_OBS.Text;
+end;
+
+procedure TForm2.FormCreate(Sender: TObject);
+begin
+begin
+fdconnection1.Params.Database := GetCurrentdir + '\assets\contatos.mdb';
+fdconnection1.Connected :=true;
+fdcontatos.TableName := 'contatos';
+fdcontatos.Active :=true;
+
+
+    if fdconnection1.Connected = true then
+    begin
+     status.Caption  :='Conectado';
+     carrega;
+    end
+  else
+     status.Caption := 'Nao Conectado';
+   end;
+
+
+
+end;
+
+end.

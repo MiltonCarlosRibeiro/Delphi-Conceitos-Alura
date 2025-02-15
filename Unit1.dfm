@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 654
-  ClientWidth = 1117
+  ClientHeight = 471
+  ClientWidth = 1069
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,8 +12,8 @@ object Form1: TForm1
   Font.Style = []
   TextHeight = 25
   object Label1: TLabel
-    Left = 72
-    Top = 46
+    Left = 296
+    Top = 89
     Width = 60
     Height = 25
     Caption = 'DOLAR'
@@ -25,8 +25,8 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 279
-    Top = 46
+    Left = 592
+    Top = 89
     Width = 42
     Height = 25
     Caption = 'REAL'
@@ -38,9 +38,9 @@ object Form1: TForm1
     ParentFont = False
   end
   object MSG: TLabel
-    Left = 72
-    Top = 166
-    Width = 89
+    Left = 296
+    Top = 177
+    Width = 5
     Height = 25
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -49,24 +49,9 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
-  object Button1: TButton
-    Left = 912
-    Top = 551
-    Width = 185
-    Height = 66
-    Caption = 'Convers'#227'o'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 0
-    OnClick = Button1Click
-  end
   object DOLAR: TEdit
-    Left = 72
-    Top = 77
+    Left = 296
+    Top = 120
     Width = 121
     Height = 33
     Font.Charset = DEFAULT_CHARSET
@@ -75,11 +60,26 @@ object Form1: TForm1
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 936
+    Top = 400
+    Width = 90
+    Height = 40
+    Caption = 'Converter'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 1
+    OnClick = Button1Click
   end
   object REAL: TEdit
-    Left = 279
-    Top = 77
+    Left = 592
+    Top = 120
     Width = 121
     Height = 33
     Font.Charset = DEFAULT_CHARSET
@@ -91,18 +91,12 @@ object Form1: TForm1
     TabOrder = 2
   end
   object COMPRA: TButton
-    Left = 847
-    Top = 77
-    Width = 209
-    Height = 65
-    Caption = 'Compra'
+    Left = 921
+    Top = 30
+    Width = 105
+    Height = 49
+    Caption = 'COMPRA'
     Enabled = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    ParentFont = False
     TabOrder = 3
     OnClick = COMPRAClick
   end

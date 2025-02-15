@@ -1,0 +1,14 @@
+object FORM_CONTATOS: TFORM_CONTATOS
+  Left = 0
+  Top = 0
+  Caption = 'GESTAO DE CONTATOS'
+  ClientHeight = 563
+  ClientWidth = 898
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+end

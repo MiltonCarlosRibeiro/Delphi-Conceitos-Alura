@@ -1,0 +1,255 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 651
+  ClientWidth = 1061
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  OnCreate = FormCreate
+  TextHeight = 15
+  object Label1: TLabel
+    Left = 40
+    Top = 40
+    Width = 18
+    Height = 25
+    Caption = 'ID'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 40
+    Top = 96
+    Width = 55
+    Height = 25
+    Caption = 'NOME'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 40
+    Top = 152
+    Width = 86
+    Height = 25
+    Caption = 'TELEFONE'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 40
+    Top = 208
+    Width = 53
+    Height = 25
+    Caption = 'EMAIL'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 40
+    Top = 264
+    Width = 124
+    Height = 25
+    Caption = 'OBSERVA'#199#213'ES'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+  end
+  object status: TLabel
+    Left = 976
+    Top = 24
+    Width = 31
+    Height = 15
+    Caption = 'status'
+  end
+  object txt_ID: TEdit
+    Left = 152
+    Top = 37
+    Width = 89
+    Height = 33
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+  end
+  object txt_NOME: TEdit
+    Left = 152
+    Top = 93
+    Width = 275
+    Height = 33
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+  end
+  object txt_TELEFONE: TEdit
+    Left = 152
+    Top = 149
+    Width = 275
+    Height = 33
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+  end
+  object txt_EMAIL: TEdit
+    Left = 152
+    Top = 205
+    Width = 275
+    Height = 33
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+  end
+  object txt_OBS: TMemo
+    Left = 40
+    Top = 295
+    Width = 387
+    Height = 162
+    Enabled = False
+    TabOrder = 4
+  end
+  object btn_NOVO: TButton
+    Left = 40
+    Top = 485
+    Width = 120
+    Height = 49
+    Caption = 'NOVO'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
+    OnClick = btn_NOVOClick
+  end
+  object btn_SALVAR: TButton
+    Left = 307
+    Top = 485
+    Width = 120
+    Height = 49
+    Caption = 'SALVAR'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 6
+    OnClick = btn_SALVARClick
+  end
+  object btn_PRIOR: TButton
+    Left = 40
+    Top = 577
+    Width = 57
+    Height = 35
+    Caption = '<'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 7
+    OnClick = btn_PRIORClick
+  end
+  object btn_NEXT: TButton
+    Left = 146
+    Top = 577
+    Width = 57
+    Height = 35
+    Caption = '>'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 8
+    OnClick = btn_NEXTClick
+  end
+  object btn_EDITAR: TButton
+    Left = 274
+    Top = 577
+    Width = 57
+    Height = 37
+    Caption = 'EDITAR'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 9
+    OnClick = btn_EDITARClick
+  end
+  object btn_EXCLUIR: TButton
+    Left = 370
+    Top = 579
+    Width = 57
+    Height = 36
+    Caption = 'EXCLUIR'
+    TabOrder = 10
+    OnClick = btn_EXCLUIRClick
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      
+        'Database=C:\Users\milto\OneDrive\Documentos\Embarcadero\Studio\P' +
+        'rojects\Win64\Debug\assets\contatos.mdb'
+      'DriverID=MSAcc')
+    Left = 992
+    Top = 40
+  end
+  object FDContatos: TFDTable
+    BeforePost = FDContatosBeforePost
+    Connection = FDConnection1
+    Left = 992
+    Top = 104
+  end
+  object DataSource1: TDataSource
+    DataSet = FDContatos
+    Left = 992
+    Top = 176
+  end
+end

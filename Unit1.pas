@@ -8,10 +8,10 @@ uses
 
 type
   TForm1 = class(TForm)
-    Button1: TButton;
     DOLAR: TEdit;
-    REAL: TEdit;
     Label1: TLabel;
+    Button1: TButton;
+    REAL: TEdit;
     Label2: TLabel;
     COMPRA: TButton;
     MSG: TLabel;
@@ -26,51 +26,47 @@ type
 
 var
   Form1: TForm1;
-  VARREAL: REAL;
+  VARREAL : REAL;
   VARNOME : STRING;
-
 
 
 implementation
 
 {$R *.dfm}
 
+
+
 procedure TForm1.Button1Click(Sender: TObject);
 begin
 
- IF DOLAR.Text = ''  then
-   BEGIN
-    SHOWMESSAGE('DIGITE VALOR EM DOLAR');
-   END
 
- ELSE
-   BEGIN
-    COMPRA.Enabled := TRUE;
-    VARREAL := STRTOFLOAT(DOLAR.Text) * 3.9 ;
-    REAL.Text := FLOATTOSTR(VARREAL);
+    IF DOLAR.TEXT ='' THEN
+       begin
+       SHOWMESSAGE('DIGITE O VALOR EM DOLAR');
+       end
 
-
-   END;
-
-
-
+    ELSE
+      begin
+        COMPRA.Enabled := TRUE;
+        VARREAL := STRTOFLOAT(DOLAR.Text) * 5.5;
+        REAL.Text := FLOATTOSTR(VARREAL);
+      end;
 
 end;
 
-
-
-
-
 procedure TForm1.COMPRAClick(Sender: TObject);
+
 begin
+   VARNOME := INPUTBOX('NOME','DIGITE SEU NOME','');
 
- VARNOME := INPUTBOX('NOME','DIGITE SEU NOME','');
 
- if (VARNOME <> '') AND  (DOLAR.Text <> '0') THEN
-   MSG.CAPTION := 'PARABENS ' + VARNOME + ' , VOCE COMPROU ' + DOLAR.Text + ' DOLAR(ES)'
- ELSE
-   SHOWMESSAGE ('FALTA NOME OU DOLAR TEM QUE SER > 0');
+   if (VARNOME <> '') AND (DOLAR.Text <> '0') THEN
+   MSG.CAPTION := 'PARABENS ' + VARNOME + ', VOCÊ COMPROU ' + DOLAR.Text + ' DORLAR(ES)'
 
- end;
+   else
+   SHOWMESSAGE ('FALTA NOME OU VALOR NÃO PODE SER ZERO');
+
+
+end;
 
 end.
